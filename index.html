@@ -1,0 +1,324 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>responsive nav</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=No">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <style>
+        .numbers {
+        align-self: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .numbers li {
+        margin-right: 8px;
+        font-size: 13px;
+    }
+
+    .numbers li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .numbers li:after {
+        content: '';
+        display: inline-block;
+        height: 1px;
+        width: 0;
+        position: relative;
+        top: -4px;
+        margin-left: 8px;
+        background: #fc0;
+        transition: width 300ms ease-out;
+    }
+
+    .numbers li.active:after {
+        width: 60px;
+    }
+
+    .dots {
+        align-self: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .dots li {
+        margin-right: 6px;
+    }
+
+    .dots li:before {
+        content: '';
+        height: 12px;
+        width: 12px;
+        display: inline-block;
+        background: #f2f2f2;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 300ms ease;
+    }
+
+    .dots li.active:before {
+        width: 30px;
+        background: #fc0;
+    }
+
+    .lines {
+        display: flex;
+        align-self: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .lines li {
+        width: 50px;
+        height: 22px;
+        margin: 0 5px;
+        position: relative;
+    }
+
+    .lines li .lines-item {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+    .lines li .lines-dash {
+        height: 3px;
+        width: 100%;
+        position: relative;
+        top: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        transition: background 300ms ease;
+    }
+
+    .lines li.active .lines-dash {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .lines li.active .lines-dash:before {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 0;
+        background: #fc0;
+        -webkit-animation: progressBar 4000ms linear forwards;
+        animation: progressBar 4000ms linear forwards;
+    }
+
+    body {
+        background: #232323;
+    }
+
+    section {
+        width: 100vw;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        height: 20vh;
+    }
+
+    @-webkit-keyframes progressBar {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    @keyframes progressBar {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    /* for slick slider */
+    .slider{
+        max-width: 768px;
+        margin: 0 auto;
+    }
+    .slider div{
+        background: #5e5532;    
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        height: 100%;
+    }
+    .slider .slick-dots{
+        position: relative;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .slider .slick-dots li button:before{
+        color: #fff;
+        content: '•';
+        background: #fff;
+        border-radius: 50%;
+        font-size: 10px;
+        line-height: 12px;
+        width: 10px;
+        height: 10px;
+        pointer-events: none;
+        opacity: 0.25;
+    }
+    .slick-dots .animated-dot{
+        position: absolute;
+        left: 20px;
+        right: 210px;
+        top: 10px;
+        background: #fff;
+        border-radius: 10px;
+        height: 10px;
+        width: auto;
+        z-index: -1;
+    }
+    .slick-dots.left-transition .animated-dot{
+        transition: left 0.5s;
+    }
+    .slick-dots.right-transition .animated-dot{
+        transition: right 0.5s;
+    }
+    .slick-dots.navDotIndex-0 .animated-dot {
+        left: 20px;
+        right: 210px;
+    }
+    .slick-dots.navDotIndex-1 .animated-dot {
+        left: 50px;
+        right: 180px;
+    }
+    .slick-dots.navDotIndex-2 .animated-dot {
+        left: 80px;
+        right: 150px;
+    }
+    .slick-dots.navDotIndex-3 .animated-dot {
+        left: 110px;
+        right: 120px;
+    }
+    .slick-dots.navDotIndex-4 .animated-dot {
+        left: 140px;
+        right: 90px;
+    }
+    .slick-dots.navDotIndex-5 .animated-dot {
+        left: 170px;
+        right: 60px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <ul class="numbers">
+            <li><a href="#">01</a></li>
+            <li><a href="#">02</a></li>
+            <li><a href="#">03</a></li>
+            <li><a href="#">04</a></li>
+            <li><a href="#">05</a></li>
+        </ul>
+    </section>
+    <section>
+        <ul class="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <section>
+        <ul class="lines">
+            <li>
+                <a class="lines-item" href="#">
+                    <div class="lines-dash"></div>
+                </a>
+            </li>
+            <li>
+                <a class="lines-item" href="#">
+                    <div class="lines-dash"></div>
+                </a>
+            </li>
+            <li>
+                <a class="lines-item" href="#">
+                    <div class="lines-dash"></div>
+                </a>
+            </li>
+            <li>
+                <a class="lines-item" href="#">
+                    <div class="lines-dash"></div>
+                </a>
+            </li>
+            <li>
+                <a class="lines-item" href="#">
+                    <div class="lines-dash"></div>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section class="slider">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+    $(function() {
+
+        //for slick slider
+        $('.slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+            centerMode: true,
+            arrows: false,
+        });
+
+        // On swipe event
+        $('.slider').on('swipe', function(event, slick, direction) {
+            if (direction === 'left') {
+                $('.slick-dots').removeClass("right-transition");
+                $('.slick-dots').addClass("left-transition");
+            } else {
+                $('.slick-dots').removeClass("left-transition");
+                $('.slick-dots').addClass("right-transition");
+            }
+            var newIndex = $(".slider .slick-slide.slick-current.slick-active").attr("data-slick-index");
+            $('.slider .slick-dots').removeClass(function(index, css) {
+                return (css.match(/\bnavDotIndex-\S+/g) || []).join(' '); // removes anything that starts with "navDotIndex-"
+            });
+            $(".slider .slick-dots").addClass("navDotIndex-" + newIndex);
+        });
+
+        $(".slider .slick-dots").append("<li class='animated-dot'><li>");
+
+        $(".slick-dots li button").click(function(e){
+            e.stopPropagation();
+        });
+
+        // for other navigation item
+        $('li').click(function() {
+            $('li').removeClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+    </script>
+</body>
+
+</html>
